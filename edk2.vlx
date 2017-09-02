@@ -1,0 +1,54 @@
+;
+; Published from https://github.com/wujingbo/SlickEdit-2013-for-edk2
+;
+; Lexer for EDK2 Language
+;
+
+[EDK2 DEC]
+idchars=a-zA-Z 0-9_
+case-sensitive=Y
+styles=xhex dqdoubles sqdoubles
+linecomment=#
+
+[EDK2 DSC]
+idchars=a-zA-Z 0-9_
+case-sensitive=Y
+styles=xhex dqdoubles sqdoubles
+linecomment=#
+
+[EDK2 FDF]
+idchars=a-zA-Z 0-9_
+case-sensitive=Y
+styles=xhex dqdoubles
+linecomment=#
+
+[EDK2 IDF]
+idchars=a-zA-Z 0-9_
+case-sensitive=Y
+styles=xhex dqdoubles
+mlcomment=/* */
+linecomment=//
+keywords=TRANSPARENT
+ppkeywords=#image
+
+[EDK2 INF]
+idchars=a-zA-Z 0-9_
+case-sensitive=Y
+styles=xhex dqdoubles
+linecomment=#
+
+[EDK2 UNI]
+idchars=a-zA-Z 0-9_
+case-sensitive=Y
+styles=xhex dqdoubles
+mlcomment=/* */
+linecomment=//
+ppkeywords=#include #string #language
+
+[EDK2 VFR]
+idchars=a-zA-Z 0-9_
+case-sensitive=Y
+styles=xhex dqdoubles
+mlcomment=/* */
+linecomment=//
+
