@@ -5,26 +5,26 @@
 ;
 
 [EDK2 DEC]
-idchars=a-zA-Z 0-9_
+idchars=a-zA-Z_ 0-9
 case-sensitive=Y
 styles=xhex dqdoubles sqdoubles
 linecomment=#
 
 [EDK2 DSC]
-idchars=a-zA-Z 0-9_
+idchars=a-zA-Z_ 0-9
 case-sensitive=Y
 styles=xhex dqdoubles sqdoubles
 linecomment=#
 keywords=DEFINE EDK_GLOBAL
 
 [EDK2 FDF]
-idchars=a-zA-Z 0-9_
+idchars=a-zA-Z_ 0-9
 case-sensitive=Y
 styles=xhex dqdoubles
 linecomment=#
 
 [EDK2 IDF]
-idchars=a-zA-Z 0-9_
+idchars=a-zA-Z_ 0-9
 case-sensitive=Y
 styles=xhex dqdoubles
 mlcomment=/* */
@@ -33,14 +33,14 @@ keywords=TRANSPARENT
 ppkeywords=#image
 
 [EDK2 INF]
-idchars=a-zA-Z 0-9_
+idchars=a-zA-Z_ 0-9
 case-sensitive=Y
 styles=xhex dqdoubles
 linecomment=#
 keywords=DEFINE LIBRARY_CLASS
 
 [EDK2 UNI]
-idchars=a-zA-Z 0-9_
+idchars=a-zA-Z_ 0-9
 case-sensitive=Y
 styles=xhex dqdoubles
 mlcomment=/* */
@@ -48,7 +48,7 @@ linecomment=//
 ppkeywords=#include #string #language
 
 [EDK2 VFR]
-idchars=a-zA-Z 0-9_
+idchars=a-zA-Z_ 0-9
 case-sensitive=Y
 styles=xhex dqdoubles
 mlcomment=/* */
