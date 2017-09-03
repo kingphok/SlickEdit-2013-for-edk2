@@ -72,6 +72,7 @@
 #define PATTERN_UNI_STRING               '^\:b?#string\:b+([a-zA-Z0-9_]+)\:b'
 #define PATTERN_DEFINE                   '^\:b?DEFINE\:b+([a-zA-Z0-9_]+)\:b?='
 #define PATTERN_EDK_GLOBAL               '^\:b?EDK_GLOBAL\:b+([a-zA-Z0-9_]+)\:b?='
+#define PATTERN_LIBRARY_CLASS            '^\:b?LIBRARY_CLASS\:b?=\:b?([a-zA-Z0-9_]+)\:b?'
 
 //
 // Add EDK2 languages and associate extensions, lexer
@@ -270,7 +271,8 @@ int edk2inf_proc_search (_str &proc_name, boolean find_first)
 {
     int status = 0;
     _str search_string = PATTERN_SECTION :+ '|' :+
-                         PATTERN_DEFINE;
+                         PATTERN_DEFINE  :+ '|' :+
+                         PATTERN_LIBRARY_CLASS;
 
     // Search
     status = search_patterns (search_string, proc_name, find_first);
@@ -285,8 +287,9 @@ int edk2inf_proc_search (_str &proc_name, boolean find_first)
 
     get_line (line);
 
-    if (tag_pattern (line, PATTERN_SECTION, proc_name, 'func')) return 0;
-    if (tag_pattern (line, PATTERN_DEFINE,  proc_name, 'gvar')) return 0;
+    if (tag_pattern (line, PATTERN_SECTION,       proc_name, 'func')) return 0;
+    if (tag_pattern (line, PATTERN_DEFINE,        proc_name, 'gvar')) return 0;
+    if (tag_pattern (line, PATTERN_LIBRARY_CLASS, proc_name, 'gvar')) return 0;
 
     return 0;
 }
