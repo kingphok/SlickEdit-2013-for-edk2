@@ -157,7 +157,7 @@ int edk2dec_proc_search (_str &proc_name, boolean find_first)
     int status = 0;
     _str search_string = PATTERN_SECTION           :+ '|' :+
                          PATTERN_GUID_PPI_PROTOCOL :+ '|' :+
-                         PATTERN_PCD_TYPE_0
+                         PATTERN_PCD_TYPE_0;
 
     // Search
     status = search_patterns (search_string, proc_name, find_first);
