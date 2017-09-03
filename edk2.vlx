@@ -15,6 +15,7 @@ idchars=a-zA-Z 0-9_
 case-sensitive=Y
 styles=xhex dqdoubles sqdoubles
 linecomment=#
+keywords=DEFINE EDK_GLOBAL
 
 [EDK2 FDF]
 idchars=a-zA-Z 0-9_
@@ -36,6 +37,7 @@ idchars=a-zA-Z 0-9_
 case-sensitive=Y
 styles=xhex dqdoubles
 linecomment=#
+keywords=DEFINE
 
 [EDK2 UNI]
 idchars=a-zA-Z 0-9_

@@ -70,6 +70,8 @@
 #define PATTERN_PCD_TYPE_0               '^\:b?[a-zA-Z0-9_]+\.([a-zA-Z0-9_]+)\:b*\|'
 #define PATTERN_IDF_IMAGE                '^\:b?#image\:b+([a-zA-Z0-9_]+)\:b'
 #define PATTERN_UNI_STRING               '^\:b?#string\:b+([a-zA-Z0-9_]+)\:b'
+#define PATTERN_DEFINE                   '^\:b?DEFINE\:b+([a-zA-Z0-9_]+)\:b?='
+#define PATTERN_EDK_GLOBAL               '^\:b?EDK_GLOBAL\:b+([a-zA-Z0-9_]+)\:b?='
 
 //
 // Add EDK2 languages and associate extensions, lexer
@@ -184,8 +186,10 @@ int edk2dec_proc_search (_str &proc_name, boolean find_first)
 int edk2dsc_proc_search (_str &proc_name, boolean find_first)
 {
     int status = 0;
-    _str search_string = PATTERN_SECTION :+ '|' :+
-                         PATTERN_PCD_TYPE_0;
+    _str search_string = PATTERN_SECTION    :+ '|' :+
+                         PATTERN_PCD_TYPE_0 :+ '|' :+
+                         PATTERN_DEFINE     :+ '|' :+
+                         PATTERN_EDK_GLOBAL;
 
     // Search
     status = search_patterns (search_string, proc_name, find_first);
@@ -202,6 +206,8 @@ int edk2dsc_proc_search (_str &proc_name, boolean find_first)
 
     if (tag_pattern (line, PATTERN_SECTION,    proc_name, 'func')) return 0;
     if (tag_pattern (line, PATTERN_PCD_TYPE_0, proc_name, 'gvar')) return 0;
+    if (tag_pattern (line, PATTERN_DEFINE,     proc_name, 'gvar')) return 0;
+    if (tag_pattern (line, PATTERN_EDK_GLOBAL, proc_name, 'gvar')) return 0;
 
     return 0;
 }
@@ -263,7 +269,8 @@ int edk2idf_proc_search (_str &proc_name, boolean find_first)
 int edk2inf_proc_search (_str &proc_name, boolean find_first)
 {
     int status = 0;
-    _str search_string = PATTERN_SECTION;
+    _str search_string = PATTERN_SECTION :+ '|' :+
+                         PATTERN_DEFINE;
 
     // Search
     status = search_patterns (search_string, proc_name, find_first);
@@ -279,6 +286,7 @@ int edk2inf_proc_search (_str &proc_name, boolean find_first)
     get_line (line);
 
     if (tag_pattern (line, PATTERN_SECTION, proc_name, 'func')) return 0;
+    if (tag_pattern (line, PATTERN_DEFINE,  proc_name, 'gvar')) return 0;
 
     return 0;
 }
