@@ -1,10 +1,8 @@
 //
 // Published from https://github.com/wujingbo/SlickEdit-2013-for-edk2
 //
-// Macros for tracing EDK2 Language
+// Module for tracing EDK2 Language
 //
-
-#include "slick.sh"
 
 // DEC (*.dec)
 #define EDK2_DEC_LANGUAGE_ID   "edk2dec"
@@ -79,13 +77,13 @@
 //
 defload ()
 {
-    _str edk2_vlx = strip_filename (__PATH__, "N") :+ FILESEP :+ 'edk2.vlx';
+    _str edk2_vlx = strip_filename (__PATH__, "N") :+ 'edk2.vlx';
 
     // Load lexer
     if (file_exists (edk2_vlx)) {
         import_lexer_file (edk2_vlx);
     } else {
-        show (edk2_vlx);
+        _message_box ('Cannot find ' :+ edk2_vlx :+ '<br>Module will not be loaded.', 'SlickEdit-2013-for-edk2');
         return;
     }
 
